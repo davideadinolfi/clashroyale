@@ -4,7 +4,7 @@ model = YOLO('yolov8n.pt')
 
 # Addestramento
 model.train(
-    data='../dataset/data.yaml',  # percorso al file yaml
+    data='../dataset/1/data.yaml',  # percorso al file yaml
     epochs=100,
     imgsz=640,
     batch=16,
