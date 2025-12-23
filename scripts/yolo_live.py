@@ -4,7 +4,7 @@ from ultralytics import YOLO
 from capture import Capture
 
 # ---- CONFIG ----
-MODEL_PATH = "runs/detect/dataset2_200iter/weights/last.pt"   # oppure models/yolov8n.pt
+MODEL_PATH = "runs/detect/dataset2_400iterMEDIO/weights/best.pt"   # oppure models/yolov8n.pt
 CONFIDENCE = 0.4
 MAX_HEIGHT = 720
 # ----------------
