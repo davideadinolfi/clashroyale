@@ -6,7 +6,7 @@ def main():
         epochs=800,
         imgsz=640,
         batch=16,
-        device='cpu',  # o '0' se hai GPU Nvidia
+        device='0',  # o '0' se hai GPU Nvidia
         name='yolo10dataset2_800iterMEDIO',  # nome cartella output
         mosaic=0.0,
         hsv_h=0.0,
