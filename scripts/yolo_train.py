@@ -1,37 +1,68 @@
 from ultralytics import YOLO
-# Modello di base (leggero)
-model = YOLO('yolov8n.pt')
-
-# Addestramento
-model.train(
-    data='../dataset/2/data.yaml',  # percorso al file yaml
-    epochs=50,
-    imgsz=640,
-    batch=16,
-    device='0',  # o '0' se hai GPU Nvidia
-    name='dataset2_50iter',  # nome cartella output
-)
-model.train(
-    data='../dataset/2/data.yaml',  # percorso al file yaml
-    epochs=200,
-    imgsz=640,
-    batch=16,
-    device='0',  # o '0' se hai GPU Nvidia
-    name='dataset2_200iter',  # nome cartella output
-)
-model.train(
-    data='../dataset/3/data.yaml',  # percorso al file yaml
-    epochs=50,
-    imgsz=640,
-    batch=16,
-    device='0',  # o '0' se hai GPU Nvidia
-    name='dataset3_50iter',  # nome cartella output
-)
-model.train(
-    data='../dataset/3/data.yaml',  # percorso al file yaml
-    epochs=200,
-    imgsz=640,
-    batch=16,
-    device='0',  # o '0' se hai GPU Nvidia
-    name='dataset3_200iter',  # nome cartella output
-)
+def main():
+    model = YOLO('yolov8n.pt')
+    model.train(
+        data='../dataset/1/data.yaml',  # percorso al file yaml
+        epochs=400,
+        imgsz=640,
+        batch=16,
+        device='cpu',  # o '0' se hai GPU Nvidia
+        name='dataset1_400iter',  # nome cartella output
+        mosaic=0.0,
+        hsv_h=0.0,
+        hsv_s=0.0,
+        hsv_v=0.0,
+        degrees=10,
+        scale=0.0,
+        erasing=0.0,
+    )
+    model = YOLO('yolov8n.pt')
+    model.train(
+        data='../dataset/2/data.yaml',  # percorso al file yaml
+        epochs=400,
+        imgsz=640,
+        batch=16,
+        device='cpu',  # o '0' se hai GPU Nvidia
+        name='dataset2_400iter',  # nome cartella output
+        mosaic=0.0,
+        hsv_h=0.0,
+        hsv_s=0.0,
+        hsv_v=0.0,
+        degrees=10,
+        scale=0.0,
+        erasing=0.0,
+    )
+    model = YOLO('yolov8m.pt')
+    model.train(
+        data='../dataset/2/data.yaml',  # percorso al file yaml
+        epochs=400,
+        imgsz=640,
+        batch=16,
+        device='cpu',  # o '0' se hai GPU Nvidia
+        name='dataset2_400iterMEDIO',  # nome cartella output
+        mosaic=0.0,
+        hsv_h=0.0,
+        hsv_s=0.0,
+        hsv_v=0.0,
+        degrees=10,
+        scale=0.0,
+        erasing=0.0,
+    )
+    model = YOLO('yolov8m.pt')
+    model.train(
+        data='../dataset/2/data.yaml',  # percorso al file yaml
+        epochs=400,
+        imgsz=640,
+        batch=16,
+        device='cpu',  # o '0' se hai GPU Nvidia
+        name='dataset2_400iterMEDIO',  # nome cartella output
+        mosaic=0.0,
+        hsv_h=0.0,
+        hsv_s=0.0,
+        hsv_v=0.0,
+        degrees=10,
+        scale=0.0,
+        erasing=0.0,
+    )
+if __name__ == "__main__":
+    main()
