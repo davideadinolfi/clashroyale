@@ -2,12 +2,12 @@ from ultralytics import YOLO
 def main():
     model = YOLO('yolov10m.pt')
     model.train(
-        data='../dataset/2/data.yaml',  # percorso al file yaml
+        data='../dataset/3/data.yaml',  # percorso al file yaml
         epochs=800,
         imgsz=640,
         batch=16,
         device='0',  # o '0' se hai GPU Nvidia
-        name='yolo10dataset2_800iterMEDIO',  # nome cartella output
+        name='yolo10dataset3_800iterMEDIO',  # nome cartella output
         mosaic=0.0,
         hsv_h=0.0,
         hsv_s=0.0,
