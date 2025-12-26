@@ -22,11 +22,11 @@ class Capture:
             w.restore()
             time.sleep(0.2)
 
-        return {
-            "top": w.top,
+        return {#taglio l'UI di bluestacks
+            "top": w.top+30,
             "left": w.left,
-            "width": w.width,
-            "height": w.height
+            "width": w.width-30,
+            "height": w.height-30
         }
 
     def grab(self):
