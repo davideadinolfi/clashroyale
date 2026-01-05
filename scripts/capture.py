@@ -16,7 +16,6 @@ class Capture:
         windows = gw.getWindowsWithTitle(self.window_name)
         if not windows:
             return None
-
         w = windows[0]
         if w.isMinimized:
             w.restore()
