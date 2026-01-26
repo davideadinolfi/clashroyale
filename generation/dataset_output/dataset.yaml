@@ -1,0 +1,12 @@
+# Dataset configuration for YOLO
+path: C:\Users\Davide Adinolfi\PycharmProjects\clashroyale\generation\dataset_output
+train: images
+val: images
+
+# Classes
+names:
+  0: ground_unit
+  1: tower
+  2: air_unit
+
+nc: 3  # number of classes

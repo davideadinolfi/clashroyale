@@ -20,7 +20,7 @@ def resize_by_height(frame, max_height):
     return cv2.resize(frame, None, fx=scale, fy=scale)
 
 def getTimer(frame, reader):
-    show_roi(frame, x=350, y=5, w=100, h=45, win_name="Slot 2")
+#    show_roi(frame, x=350, y=5, w=100, h=45, win_name="Slot 2")
     # Leggi il numero
     roi = frame[5:50, 350:450]  # ritaglia la zona del timer
     result = reader.readtext(roi, detail=0, allowlist='0123456789:')
@@ -29,7 +29,7 @@ def getTimer(frame, reader):
 
 
 def getElixir(frame):
-    show_roi(frame, x=100, y=777, w=330, h=110, win_name="Slot 1")
+#    show_roi(frame, x=100, y=777, w=330, h=110, win_name="Slot 1")
     cv2.waitKey(1)
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     x_coords = [420, 400, 365, 335, 305, 275, 240, 210, 180, 145]
@@ -109,6 +109,95 @@ def match_templates_on_positions(frame, threshold=0.4):
 
     return matches
 
+
+def create_grid_matrix(results, frame_shape, grid_rows=72, grid_cols=128):
+    """
+    Crea una matrice 72x128 con i nomi degli oggetti classificati.
+    Ogni cella contiene il nome dell'oggetto presente in quella zona.
+    """
+    h, w = frame_shape[:2]
+    cell_h = h / grid_rows
+    cell_w = w / grid_cols
+
+    # Matrice vuota
+    grid = [[None for _ in range(grid_cols)] for _ in range(grid_rows)]
+
+    # Per ogni detection
+    boxes = results[0].boxes
+    for box in boxes:
+        # Coordinate del bounding box
+        x1, y1, x2, y2 = box.xyxy[0].cpu().numpy()
+        cls = int(box.cls[0])
+        name = results[0].names[cls]
+
+        # Centro del bounding box
+        cx = (x1 + x2) / 2
+        cy = (y1 + y2) / 2
+
+        # Converti in coordinate griglia
+        grid_x = int(cx / cell_w)
+        grid_y = int(cy / cell_h)
+
+        # Assicurati che sia dentro i limiti
+        grid_x = min(grid_x, grid_cols - 1)
+        grid_y = min(grid_y, grid_rows - 1)
+
+        grid[grid_y][grid_x] = name
+
+    return grid
+
+
+def get_detections_info(results):
+    """
+    Restituisce lista con posizioni e nomi degli oggetti.
+    """
+    detections = []
+    boxes = results[0].boxes
+
+    for box in boxes:
+        x1, y1, x2, y2 = box.xyxy[0].cpu().numpy()
+        cls = int(box.cls[0])
+        name = results[0].names[cls]
+        conf = float(box.conf[0])
+
+        detections.append({
+            'name': name,
+            'position': (int((x1 + x2) / 2), int((y1 + y2) / 2)),  # centro
+            'bbox': (int(x1), int(y1), int(x2), int(y2)),
+            'confidence': conf
+        })
+
+    return detections
+
+
+def update(cap , model , reader):
+    last_time = time.time()
+
+    frame = cap.grab()
+
+    # ---- YOLO INFERENCE ----
+    results = model.predict(
+        source=frame,
+        conf=CONFIDENCE,
+        imgsz=640,
+        verbose=False
+    )
+
+    # Ottieni lista detections
+    detections = get_detections_info(results)
+
+    # Crea matrice 72x128
+    grid_matrix = create_grid_matrix(results, frame.shape)
+
+    matches = match_templates_on_positions(frame)
+    slot_to_card = {
+        m["position"]: m["template"]
+        for m in matches
+    }
+
+    return grid_matrix, getElixir(frame), getSecondi(getTimer(frame, reader)), slot_to_card
+
+
 def main():
     cap = Capture("BlueStacks")
     model = YOLO(MODEL_PATH)
@@ -116,6 +205,7 @@ def main():
     print("[INFO] YOLO live avviato")
     last_time = time.time()
     card_cycle = deque(maxlen=8)
+
     while True:
         frame = cap.grab()
 
@@ -126,17 +216,28 @@ def main():
             imgsz=640,
             verbose=False
         )
-        matches=match_templates_on_positions(frame)
+
+        # Ottieni lista detections
+        detections = get_detections_info(results)
+
+        # Crea matrice 72x128
+        grid_matrix = create_grid_matrix(results, frame.shape)
+
+        matches = match_templates_on_positions(frame)
         slot_to_card = {
             m["position"]: m["template"]
             for m in matches
         }
 
-        for slot,item in slot_to_card.items():
+        for slot, item in slot_to_card.items():
             if item not in card_cycle:
                 card_cycle.append(item)
-        print(getElixir(frame))
-        print(getSecondi(getTimer(frame, reader)))
+
+        # Stampa info (opzionale)
+        print(f"Detections: {len(detections)}")
+        print(f"Elixir: {getElixir(frame)}")
+        print(f"Timer: {getSecondi(getTimer(frame, reader))}")
+
         annotated = results[0].plot()
 
         # ---- FPS ----
@@ -197,7 +298,6 @@ def show_roi(frame, x, y, w, h, win_name="ROI"):
         return
 
     cv2.imshow(win_name, roi)
-
 
 
 if __name__ == "__main__":

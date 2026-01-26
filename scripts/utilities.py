@@ -61,7 +61,7 @@ def getSecondi(str):
             return "errore timer"
         str = str.replace(":", "")
         if(4>len(str)>2):
-            return int(str[0])*60+int(str[-1])+int(str[-2])*10
+            return int(str[0])*60+int(str[-1])+int(str[-2])*10  #l'unica riga di codice non scritta da chatgpt
     except Exception:
         return "errore timer"
 
