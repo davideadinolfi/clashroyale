@@ -1,0 +1,8 @@
+# Dataset configuration for YOLO
+train: ../train/images
+val: ../valid/images
+
+# Classes
+names:
+    ['archer', 'barbarian', 'battleram', 'bomber', 'cannon', 'electrospirit', 'giant', 'goblin', 'goblinHut', 'hogrider', 'infernotower', 'knight', 'minipekka', 'mortar', 'skeleton', 'spearGoblin', 'superGoblin', 'tombstone', 'valk', 'bombtower', 'firespirit', 'furnace', 'goblinCage', 'musketeer', 'bat', 'flyingmachine', 'megaminion', 'minion', 'skeletondragon', 'tower']
+nc: 30  # number of classes

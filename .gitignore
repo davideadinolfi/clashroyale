@@ -2,3 +2,5 @@
 katacr/
 rubato/
 logs/
+.gitignore
+generation/dataset_output

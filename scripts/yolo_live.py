@@ -1,16 +1,15 @@
 from collections import deque
-
+import sys
 import cv2
 import time
 from ultralytics import YOLO
 from capture import Capture
 import easyocr
-
 from scripts.utilities import getSecondi
 
 # ---- CONFIG ----
-MODEL_PATH = "runs/detect/yolo10dataset3_150iterMEDIO/weights/best.pt"
-CONFIDENCE = 0.1
+MODEL_PATH = "runs/detect/datasetgenerativo14/weights/last.pt"
+CONFIDENCE = 0.6
 MAX_HEIGHT = 720
 # ----------------LA RISOLUZIONE DI BLUESTACKS è 1280x640
 
@@ -201,6 +200,8 @@ def update(cap , model , reader):
 def main():
     cap = Capture("BlueStacks")
     model = YOLO(MODEL_PATH)
+    print(sys.executable)
+
     reader = easyocr.Reader(['en'], gpu=False)
     print("[INFO] YOLO live avviato")
     last_time = time.time()
@@ -235,8 +236,8 @@ def main():
 
         # Stampa info (opzionale)
         print(f"Detections: {len(detections)}")
-        print(f"Elixir: {getElixir(frame)}")
-        print(f"Timer: {getSecondi(getTimer(frame, reader))}")
+        #print(f"Elixir: {getElixir(frame)}")
+       # print(f"Timer: {getSecondi(getTimer(frame, reader))}")
 
         annotated = results[0].plot()
 
@@ -256,7 +257,8 @@ def main():
         )
 
         display = resize_by_height(annotated, MAX_HEIGHT)
-        cv2.imshow("YOLO Live", display)
+
+        cv2.imshow("yolo live", display)
 
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break

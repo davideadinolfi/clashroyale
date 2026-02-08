@@ -5,5 +5,5 @@ val: images
 
 # Classes
 names:
-    {'archer': 0, 'barbarian': 1, 'battleram': 2, 'bomber': 3, 'cannon': 4, 'electrospirit': 5, 'giant': 6, 'goblin': 7, 'goblinHut': 8, 'hogrider': 9, 'infernotower': 10, 'knight': 11, 'megaminion': 12, 'minipekka': 13, 'mortar': 14, 'skeleton': 15, 'spearGoblin': 16, 'speargoblin': 17, 'supergoblin': 18, 'tombstone': 19, 'valk': 20, 'bombtower': 21, 'firespirit': 22, 'furnace': 23, 'musketeer': 24, 'bat': 25, 'flyingmachine': 26, 'minion': 27, 'skeletondragon': 28, 'tower': 29}
+    ['archer', 'barbarian', 'battleram', 'bomber', 'cannon', 'electrospirit', 'giant', 'goblin', 'goblinHut', 'hogrider', 'infernotower', 'knight', 'minipekka', 'mortar', 'skeleton', 'spearGoblin', 'superGoblin', 'tombstone', 'valk', 'bombtower', 'firespirit', 'furnace', 'goblinCage', 'musketeer', 'bat', 'flyingmachine', 'megaminion', 'minion', 'skeletondragon', 'tower']
 nc: 30  # number of classes

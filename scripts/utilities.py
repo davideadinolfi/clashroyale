@@ -22,36 +22,12 @@ def count_first_numbers(folder: str):
     return counter
 
 def labelcounter():
-    folder = "../dataset/3/train/labels"  # <-- cambia con la cartella dei .txt
+    folder = "../generation/dataset_output/labels"  # <-- cambia con la cartella dei .txt
     counts = count_first_numbers(folder)
-    labels = ['EArcher', 'EArcherQueen', 'EArcherRascal', 'EBRam', 'EBabyDrag', 'EBalloon', 'EBandit', 'EBarb', 'EBat',
-              'EBeserker', 'EBigPekka', 'EBigRascal', 'EBomber', 'EBombertower', 'EBossBandit', 'EBowler', 'EBrawler',
-              'EBush', 'ECannonCart', 'ECannoneerTower', 'EDarkPrince', 'EDartGoblin', 'EDoctor', 'EEVArcher',
-              'EEVFirecrack', 'EEVFurnace', 'EEVLarry', 'EEVMegaKnight', 'EEVRoyalG', 'EEVTesla', 'EEVWitch', 'EEX',
-              'EElectroDrag', 'EElectroG', 'EEletrcoWizard', 'EEletroSpirit', 'EEliteBarb', 'EElixerGolem', 'EFireball',
-              'EFirecrack', 'EFirespirit', 'EFisherman', 'EFlyingMachine', 'EFurnace', 'EGiant', 'EGiantSkeleton',
-              'EGoblin', 'EGoblinBarrel', 'EGoblinCage', 'EGoblinGiant', 'EGoblinHut', 'EGoblindem', 'EGolem',
-              'EGolemMite', 'EGuard', 'EHealSpirit', 'EHog', 'EHogRider', 'EHunter', 'EIceGolem', 'EIceSpirit',
-              'EIceWizard', 'EInfernoDrag', 'EKingTower', 'EKnight', 'ELarry', 'ELavaHound', 'ELittlePrince',
-              'ELittlePrinceSide', 'ELumberJack', 'EMagicArcher', 'EMegaKnight', 'EMegaM', 'EMightyMiner', 'EMiner',
-              'EMiniPeka', 'EMonk', 'EMonster', 'EMorter', 'EMotherWitch', 'EMusk', 'EMuskNew', 'ENightWitch',
-              'EPhenix', 'EPrince', 'EPrincess', 'EPump', 'ERamRider', 'ERocket', 'ERoyalGhost', 'ERoyalHog',
-              'ERoyalKnight', 'ERoyalR', 'ERoyaleG', 'ESkelBarrel', 'ESnowBall', 'ESparky', 'ESpearGoblin',
-              'ESpiritEmp', 'ESpritEmpWalk', 'ETesla', 'ETomb', 'EValk', 'EWallBreak', 'EWitch', 'EWizard', 'EXbow',
-              'EZappy', 'Ecan', 'EnemyDagTower', 'EnemyPanTower', 'EnemyPrincessTower', 'EnemyRocket', 'OArcher',
-              'OBRam', 'OBabyDrag', 'OBalloon', 'OBandit', 'OBarb', 'OBat', 'OBeserker', 'OBigPekka', 'OBomber',
-              'OBombertower', 'OBowler', 'OBrawler', 'OCan', 'OCannoneerTower', 'ODarkPrince', 'ODartGoblin', 'ODoctor',
-              'OEVArcher', 'OEVElectroDrag', 'OEVFirecrack', 'OEVInfernoDrag', 'OEVRoyalG', 'OEVWizard', 'OElectroDrag',
-              'OElectroWizard', 'OElexirgolem', 'OEx', 'OFireSpirit', 'OFireWizard', 'OFirecrack', 'OFisherman',
-              'OFlyingMachine', 'OFurnace', 'OGiant', 'OGiantSkeleton', 'OGoblin', 'OGoblinBarrel', 'OGoblinCage',
-              'OGoblinDem', 'OGoblinDrill', 'OGoblinGiant', 'OGoblinHut', 'OGoblinMachine', 'OGolem', 'OGuard',
-              'OHealer', 'OHog', 'OHogRider', 'OHunter', 'OIceGolem', 'OIceSpirit', 'OIceWizard', 'OInfernoDrag',
-              'OInfernoTower', 'OKnight', 'OLarry', 'OLittlePrince', 'OLumberjack', 'OMagicArcher', 'OMegaKnight',
-              'OMegam', 'OMightyMiner', 'OMiniGolem', 'OMiniPekka', 'OMortar', 'OMotherWitch', 'OMusk', 'OMuskNew',
-              'OPrince', 'OPrincess', 'OPump', 'ORamrider', 'ORocket', 'ORoyalG', 'ORoyalGhost', 'ORoyalHog',
-              'ORoyalKnight', 'ORoyalR', 'OSkelDrag', 'OSparky', 'OSpearGoblin', 'OSpiritEmp', 'OTesla', 'OTomb',
-              'OValk', 'OWallBreak', 'OWitch', 'OWizard', 'OXbow', 'OZappy', 'OwnDagTower', 'OwnKingTower',
-              'OwnPanTower', 'OwnPrincessTower', 'TowerDown', 'eminion', 'ofireball', 'ominion']
+    labels = ['archer', 'barbarian', 'battleram', 'bomber', 'cannon', 'electrospirit', 'giant',
+              'goblin', 'goblinHut', 'hogrider', 'infernotower', 'knight', 'minipekka', 'mortar',
+              'skeleton', 'spearGoblin', 'superGoblin', 'tombstone', 'valk', 'bombtower', 'firespirit',
+              'furnace', 'goblinCage', 'musketeer', 'bat', 'flyingmachine', 'megaminion', 'minion', 'skeletondragon', 'tower']
     for key, value in sorted(counts.items(), key=lambda x: x[1], reverse=True):
         print(f"{labels[key]}: {value}")
 
