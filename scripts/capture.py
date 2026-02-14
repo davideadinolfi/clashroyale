@@ -25,7 +25,8 @@ class Capture:
             "top": w.top+30,
             "left": w.left,
             "width": w.width-30,
-            "height": w.height-30
+            #"height": w.height-30
+            "height": w.height - 230
         }
 
     def grab(self):

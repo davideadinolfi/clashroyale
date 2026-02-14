@@ -4,3 +4,4 @@ rubato/
 logs/
 .gitignore
 generation/dataset_output
+scripts/video

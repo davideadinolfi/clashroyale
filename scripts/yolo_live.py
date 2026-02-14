@@ -8,7 +8,7 @@ import easyocr
 from scripts.utilities import getSecondi
 
 # ---- CONFIG ----
-MODEL_PATH = "runs/detect/datasetgenerativo14/weights/last.pt"
+MODEL_PATH = "runs/detect/generato2/weights/last.pt"
 CONFIDENCE = 0.6
 MAX_HEIGHT = 720
 # ----------------LA RISOLUZIONE DI BLUESTACKS è 1280x640
