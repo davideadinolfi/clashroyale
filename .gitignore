@@ -3,5 +3,5 @@ katacr/
 rubato/
 logs/
 .gitignore
-generation/dataset_output
-scripts/video
+generation/dataset_output/
+scripts/runs/video/

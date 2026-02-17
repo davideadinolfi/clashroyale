@@ -24,10 +24,11 @@ def count_first_numbers(folder: str):
 def labelcounter():
     folder = "../generation/dataset_output/labels"  # <-- cambia con la cartella dei .txt
     counts = count_first_numbers(folder)
-    labels = ['archer', 'barbarian', 'battleram', 'bomber', 'cannon', 'electrospirit', 'giant',
-              'goblin', 'goblinHut', 'hogrider', 'infernotower', 'knight', 'minipekka', 'mortar',
-              'skeleton', 'spearGoblin', 'superGoblin', 'tombstone', 'valk', 'bombtower', 'firespirit',
-              'furnace', 'goblinCage', 'musketeer', 'bat', 'flyingmachine', 'megaminion', 'minion', 'skeletondragon', 'tower']
+    labels =     ['archer', 'barbarian', 'battleram', 'bomber', 'cannon', 'electrospirit', 'giant', 'goblin', 'goblinHut', 'hogrider', 'infernotower',
+                  'knight', 'minipekka', 'mortar', 'skeleton', 'spearGoblin', 'superGoblin', 'tombstone', 'valk', 'wizard',
+                  'bombtower', 'firespirit', 'furnace', 'goblinCage', 'musketeer'
+        , 'bat', 'flyingmachine', 'megaminion', 'minion', 'skeletondragon', 'AllyBigHP', 'AllyTinyHP',
+                  'EnemyBigHP', 'enemyLevel', 'EnemyTinyHP', 'tower']
     for key, value in sorted(counts.items(), key=lambda x: x[1], reverse=True):
         print(f"{labels[key]}: {value}")
 

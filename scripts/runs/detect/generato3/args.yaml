@@ -10,10 +10,10 @@ imgsz: 640
 save: true
 save_period: -1
 cache: false
-device: cpu
+device: '0'
 workers: 8
 project: null
-name: generato3
+name: generato33
 exist_ok: false
 pretrained: true
 optimizer: auto
@@ -103,4 +103,4 @@ auto_augment: randaugment
 erasing: 0.4
 cfg: null
 tracker: botsort.yaml
-save_dir: C:\Users\Davide Adinolfi\PycharmProjects\clashroyale\scripts\runs\detect\generato3
+save_dir: C:\Users\Simone\PyCharmMiscProject\clashroyale\runs\detect\generato33
