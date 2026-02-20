@@ -4,5 +4,5 @@ val: valid
 
 # Classes
 names:
-    ['archer', 'barbarian', 'battleram', 'bomber', 'cannon', 'electrospirit', 'firespirit', 'giant', 'goblin', 'goblinHut', 'hogrider', 'infernotower', 'knight', 'minipekka', 'mortar', 'musketeer', 'skeleton', 'spearGoblin', 'superGoblin', 'tombstone', 'valk', 'wizard', 'bombtower', 'furnace', 'goblinCage', 'bat', 'flyingmachine', 'megaminion', 'minion', 'skeletondragon', 'AllyHP', 'EnemyHP', 'enemyLevel', 'tower']
+    ['archer', 'barbarian', 'battleram', 'bomber', 'cannon', 'electroSpirit', 'fireSpirit', 'giant', 'goblin', 'goblinHut', 'hogRider', 'infernotower', 'knight', 'miniPekka', 'mortar', 'musketeer', 'skeleton', 'spearGoblin', 'superGoblin', 'tombstone', 'valk', 'wizard', 'bombtower', 'furnace', 'goblinCage', 'bat', 'flyingmachine', 'megaMinion', 'minion', 'skeletonDragon', 'AllyHP', 'EnemyHP', 'enemyLevel', 'tower']
 nc: 34  # number of classes
