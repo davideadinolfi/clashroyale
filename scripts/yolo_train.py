@@ -6,11 +6,11 @@ from katacr.utils.detection.data import transform_affine
 def main():
     model = YOLO('yolov10m.pt' )
     model.train(
-        data='../dataset/generato3/dataset.yaml',  # percorso al file yaml
-        epochs=200,
+        data='../dataset/generato5/dataset.yaml',  # percorso al file yaml
+        epochs=100,
         batch=16,
         device='0',  # o '0' se hai GPU Nvidia
-        name='generato3',  # nome cartella output
+        name='generato5',  # nome cartella output
         hsv_h=0.003,
         hsv_s=0.2,
         hsv_v=0.1,

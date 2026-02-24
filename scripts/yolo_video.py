@@ -87,7 +87,7 @@ def process_video_basic(video_path, model_path, output_path):
 
 # Uso
 process_video_basic(
-    video_path=Path(r"C:\Users\Davide Adinolfi\Downloads\Video senza titolo - Realizzato con Clipchamp (4).mp4"),
-    model_path="runs/detect/generato5/weights/last.pt",
+    video_path=Path(r"C:\Users\Davide Adinolfi\Downloads\porcodio.mp4"),
+    model_path="runs/detect/generato6/weights/last.pt",
     output_path="runs/video/video_output.mp4"
 )
