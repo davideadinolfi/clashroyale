@@ -41,13 +41,13 @@ def extract_frame_and_predict(video_path, model_path, frame_number=0, output_pat
     print(f"✓ Frame {frame_number} estratto: {frame.shape}")
 
     # YOLO prediction
-    results = model.predict(frame, conf=0.4, verbose=True)
+    results = model.predict(frame, conf=0.37, verbose=True)
 
     # Frame con bounding box
     annotated = results[0].plot()
-
+    blended = cv2.addWeighted(frame, 1 - 0.6, annotated, 0.6, 0)
     # Salva
-    cv2.imwrite(output_path, annotated)
+    cv2.imwrite(output_path, blended)
 
     print(f"✓ Immagine salvata in: {output_path}")
     print(f"  Detections: {len(results[0].boxes)}")
@@ -59,7 +59,7 @@ def extract_frame_and_predict(video_path, model_path, frame_number=0, output_pat
         name = results[0].names[cls]
         print(f"    - {name}: {conf:.2f}")
 
-    return annotated
+    return blended
 
 
 # ========== USO ==========
@@ -67,7 +67,7 @@ def extract_frame_and_predict(video_path, model_path, frame_number=0, output_pat
 # Primo frame
 extract_frame_and_predict(
     video_path=Path(r"C:\Users\Davide Adinolfi\Downloads\porcodio.mp4"),
-    model_path="runs/detect/generato5/weights/best.pt",
-    frame_number=1,
+    model_path="runs/detect/generato4/weights/best.pt",
+    frame_number=435,
     output_path="runs/images/pred.jpg"
 )

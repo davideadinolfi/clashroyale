@@ -4,7 +4,7 @@ from katacr.utils.detection.data import transform_affine
 
 
 def main():
-    model = YOLO('yolov10m.pt' )
+    model = YOLO('yolov10l.yaml' )
     model.train(
         data='../dataset/generato5/dataset.yaml',  # percorso al file yaml
         epochs=100,
@@ -17,7 +17,8 @@ def main():
         degrees=5,
         translate=0.2,
         mosaic=0.4,
-        erasing=0.2
+        erasing=0.2,
+        scale=0.1
     )
 if __name__ == "__main__":
     main()

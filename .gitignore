@@ -5,3 +5,5 @@ logs/
 .gitignore
 generation/dataset_output/
 scripts/runs/video/
+scripts/demo.py
+dataset/generato5
